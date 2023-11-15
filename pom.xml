@@ -9,8 +9,10 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <modules>
-        <module>api-tests</module>
-        <module>ui-tests</module>
+        <module>restassured-api-tests</module>
+        <module>playwright-ui-tests</module>
+        <module>selenide-ui-tests</module>
+        <module>httpclient-api-tests</module>
     </modules>
 
     <properties>

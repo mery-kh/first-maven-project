@@ -1,4 +1,5 @@
 import io.restassured.RestAssured;
+import io.restassured.response.Response;
 import org.example.data_db.PersonEntity;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -9,7 +10,7 @@ import org.junit.Before;
 import org.junit.Test;
 import java.util.List;
 
-public class GetUsers {
+public class GetUsersTest {
 
     private SessionFactory sessionFactory;
     private Session session;
@@ -40,11 +41,9 @@ public class GetUsers {
         for (PersonEntity user : resultLіst) {
             System.out.println("User ID: " + user.getId() + ", Name: " + user.getFirstName() + " " + user.getSecondName());
         }
-                RestAssured.baseURI = "http://77.50.236.203:4879";
-                RestAssured.given()
-                .when()
-                .get("/users")
-                .then()
-                .statusCode(200);
+        RestAssured.baseURI = "http://77.50.236.203:4879";
+        Response response = RestAssured.given().when().get("/users");
+        response.then().statusCode(200);
+        System.out.println("Response body: " + response.getBody().asString());
     }
 }
